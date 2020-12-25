@@ -1,0 +1,17 @@
+main {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px 10px;
+  grid-template-columns: 1fr;
+  height: 80vh;
+}
+@media (min-width: 520px) {
+  main {
+    grid-template-columns: 60% 40%;
+    color: red;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+  }
+}

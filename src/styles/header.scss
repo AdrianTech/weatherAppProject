@@ -1,0 +1,50 @@
+header {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #0b0161;
+  display: flex;
+  //   position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: #0575c0;
+  .logo {
+    //  width: 20%;
+  }
+}
+form {
+  border: 1px solid black;
+  border-radius: 10px;
+  input,
+  button {
+    border: none;
+    padding: 7px;
+    font-size: 16px;
+  }
+  input {
+    outline: none;
+    background-color: #fff;
+    width: 75%;
+  }
+  button {
+    background-color: #cef2f8;
+    color: #250202;
+    font-weight: 700;
+    width: 25%;
+  }
+}
+
+@media (min-width: 520px) {
+  header {
+    padding: 0 30px;
+  }
+  form {
+    input,
+    button {
+      font-size: 18px;
+    }
+    button {
+      padding: 7px 12px;
+    }
+  }
+}
