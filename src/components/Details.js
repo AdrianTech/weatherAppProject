@@ -15,7 +15,7 @@ const Details = () => {
       <ul>
         <li>
           <span>Air pressure</span>
-          <span>{pressure} pha</span>
+          <span>{pressure} hPa</span>
         </li>
         <li>
           <span>Humidity</span>

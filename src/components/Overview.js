@@ -5,9 +5,9 @@ import { DataContext } from "../store/getData";
 import WelcomePage from "./WelcomePage";
 
 const Overview = () => {
-  const { getData, isCity } = React.useContext(DataContext);
+  const { isCity, getData } = React.useContext(DataContext);
   React.useEffect(() => {
-    window.addEventListener("load", (e) => getData(e, "onload"));
+    getData(localStorage.getItem("city"), "onLoad");
   }, []);
   return (
     <main>

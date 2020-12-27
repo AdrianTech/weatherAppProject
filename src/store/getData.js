@@ -2,30 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { API } from "../utils/config";
-import { saveCity, getCity } from "../utils/helpers";
+import { saveCity } from "../utils/helpers";
 export const DataContext = React.createContext({});
 
 export const DataContextProvider = (props) => {
-  const [cityValue, setCityValue] = React.useState("");
   const [city, setCity] = React.useState({});
   const [isCity, setIsCity] = React.useState(false);
 
-  const getData = async (e, onLoad) => {
-    e.preventDefault();
-    const storageCity = getCity();
-    if (cityValue === "" && storageCity === null) return;
+  const getData = async (cityVal, from) => {
+    console.log(cityVal, from);
+    if (!cityVal && !from) return alert("Enter a city");
+    else if (!cityVal && from) return;
     try {
-      const res = await axios.get(`${API.link}${onLoad ? storageCity : cityValue}${API.key}`);
+      const res = await axios.get(`${API.link}${cityVal}${API.key}`);
+      console.log(res);
       setCity(res.data);
-      saveCity(cityValue);
+      saveCity(cityVal);
       setIsCity(true);
-      setCityValue("");
+      return true;
     } catch (e) {
-      if (e.response.data.cod === "404") alert(`Not found ${onLoad ? storageCity : cityValue}`);
-      else alert("Something went wrong. Try again");
+      alert(e.response.data.message);
+      return false;
     }
   };
-  return <DataContext.Provider value={{ isCity, getData, setCityValue, city, cityValue }}>{props.children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ isCity, getData, city }}>{props.children}</DataContext.Provider>;
 };
 DataContext.propTypes = {
   children: PropTypes.node.isRequired,

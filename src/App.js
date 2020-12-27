@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import Overview from "./components/Overview";
-import { DataContextProvider, DataContext } from "./store/getData";
-import WelcomePage from "./components/WelcomePage";
+import { DataContextProvider } from "./store/getData";
 
 function App() {
   return (

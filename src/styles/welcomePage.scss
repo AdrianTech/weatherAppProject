@@ -1,7 +1,27 @@
 .welcomePage {
-  max-width: 400px;
-  margin: auto;
+  max-width: 250px;
+  margin: 40px auto;
+  text-align: center;
   img {
     width: 100%;
+  }
+  h3,
+  span {
+    background-color: white;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    display: inline;
+    margin: auto;
+    color: #0e44f3;
+  }
+}
+@media (min-width: 520px) {
+  .welcomePage {
+    max-width: 350px;
+    h3,
+    span {
+      font-size: 18px;
+    }
   }
 }

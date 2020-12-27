@@ -3,7 +3,6 @@ header {
   height: 70px;
   border-bottom: 1px solid #0b0161;
   display: flex;
-  //   position: fixed;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
@@ -16,7 +15,6 @@ header {
   }
 }
 form {
-  // border: 1px solid rgba(0, 0, 0, 0.2);
   width: 200px;
   input,
   button {
@@ -28,12 +26,20 @@ form {
     outline: none;
     background-color: #fff;
     width: 75%;
+    &::placeholder {
+      font-size: 14px;
+      font-style: italic;
+    }
   }
   button {
     background-color: #cef2f8;
     color: #250202;
     font-weight: 700;
     width: 25%;
+    &:disabled {
+      background-color: #c5c4c4;
+      cursor: not-allowed;
+    }
   }
 }
 
