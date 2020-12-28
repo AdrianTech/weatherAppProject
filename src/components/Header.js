@@ -1,5 +1,5 @@
 import React from "react";
-import { DataContext } from "../store/getData";
+import { DataContext } from "../store/dataContext";
 import logo from "../assets/weather.png";
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
           submitData();
         }}
       >
-        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder="type city here..." />
+        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder="type your city" />
         <button disabled={cityValue.length < 2}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>

@@ -1,13 +1,14 @@
 import React from "react";
 import Details from "./Details";
 import Showcase from "./Showcase";
-import { DataContext } from "../store/getData";
+import { DataContext } from "../store/dataContext";
+import { getCity } from "../utils/helpers";
 import WelcomePage from "./WelcomePage";
 
 const Overview = () => {
   const { isCity, getData } = React.useContext(DataContext);
   React.useEffect(() => {
-    getData(localStorage.getItem("city"), "onLoad");
+    getData(getCity());
   }, []);
   return (
     <main>

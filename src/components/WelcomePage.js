@@ -5,8 +5,11 @@ const WelcomePage = () => {
   return (
     <div className="welcomePage">
       <img src={img} alt="welcome" />
-      <h3>Weather App</h3>
-      <span>Made by AdrianTech</span>
+      <div className="madeBy">
+        <p>
+          Weather App<span>made by AdrianTech</span>
+        </p>
+      </div>
     </div>
   );
 };

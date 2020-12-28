@@ -1,5 +1,5 @@
 import React from "react";
-import { DataContext } from "../store/getData";
+import { DataContext } from "../store/dataContext";
 
 const Showcase = () => {
   const { city } = React.useContext(DataContext);

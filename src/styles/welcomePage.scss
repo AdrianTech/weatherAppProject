@@ -5,23 +5,30 @@
   img {
     width: 100%;
   }
-  h3,
-  span {
-    background-color: white;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 5px;
-    display: inline;
-    margin: auto;
+  .madeBy {
+    background-color: rgba(255, 255, 255, 0.8);
     color: #0e44f3;
+    font-size: 20px;
+    padding: 7px 20px;
+    display: inline-block;
+    border-radius: 6px;
+    margin-top: -10px;
+    p {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8em;
+      font-weight: 700;
+      span {
+        font-size: 0.7em;
+      }
+    }
   }
 }
 @media (min-width: 520px) {
   .welcomePage {
     max-width: 350px;
-    h3,
-    span {
-      font-size: 18px;
+    .madeBy {
+      font-size: 24px;
     }
   }
 }

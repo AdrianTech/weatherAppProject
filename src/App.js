@@ -1,17 +1,17 @@
 import React from "react";
 import Header from "./components/Header";
 import Overview from "./components/Overview";
-import { DataContextProvider } from "./store/getData";
+import Alert from "./components/Alert";
+import { DataContext } from "./store/dataContext";
 
 function App() {
+  const { alert } = React.useContext(DataContext);
   return (
-    <DataContextProvider>
-      <div className="wrapper">
-        <Header />
-        <Overview />
-      </div>
-    </DataContextProvider>
+    <div className="wrapper">
+      <Header />
+      {alert.state && <Alert msg={alert.msg} />}
+      <Overview />
+    </div>
   );
 }
-
 export default App;

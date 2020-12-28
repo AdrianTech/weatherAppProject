@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-$bg-primary: rgba(6, 212, 248, 0.9);
+$bg-primary: rgba(2, 214, 252, 0.9);
+@mixin bdrs {
+  border-radius: 8px;
+}
 *,
 ::before,
 ::after {
@@ -12,12 +15,34 @@ body {
   background: url("../assets//winter.jpg") no-repeat center/cover;
 }
 .wrapper {
-  padding-bottom: 20px;
   height: 100vh;
+  padding-bottom: 30px;
 }
 button {
   cursor: pointer;
 }
 ul {
   list-style: none;
+}
+.alert {
+  display: flex;
+  top: 60px;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  z-index: 3;
+  p {
+    padding: 5px 30px;
+    @include bdrs;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: #fff;
+    color: #d60404;
+    border: 2px solid #d60404;
+  }
+}
+@media (min-width: 768px) {
+  .alert p {
+    transform: scale(1.4);
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { DataContext } from "../store/getData";
+import { DataContext } from "../store/dataContext";
 const Details = () => {
   const { city } = React.useContext(DataContext);
   const { timezone, sys, wind } = city;
@@ -11,7 +11,6 @@ const Details = () => {
   const sunsetTime = new Date(setSunset * 1000).toLocaleTimeString();
   return (
     <section className="details">
-      {console.log("rendering")}
       <ul>
         <li>
           <span>Air pressure</span>
@@ -23,7 +22,7 @@ const Details = () => {
         </li>
         <li>
           <span>Wind speed</span>
-          <span>{wind.speed} m/s</span>
+          <span>{wind.speed.toFixed(1)} m/s</span>
         </li>
         <li>
           <span>Sunrise</span>

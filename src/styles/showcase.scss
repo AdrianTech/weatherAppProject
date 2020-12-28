@@ -1,6 +1,5 @@
 .showcase,
 .details {
-  background-color: $bg-primary;
   height: 100%;
   color: #000000;
   text-align: center;
@@ -11,14 +10,12 @@ li {
   display: flex;
   justify-content: space-evenly;
 }
-.bottomInfo {
-  font-size: 19px;
-}
 .showcase {
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
   padding: 15px 0;
+  h3 {
+    font-size: 19px;
+  }
   img {
     transform: scale(1.4);
   }
@@ -55,7 +52,7 @@ li {
   .details li {
     font-size: 19px;
   }
-  .bottomInfo {
+  .showcase h3 {
     font-size: 22px;
   }
 }
