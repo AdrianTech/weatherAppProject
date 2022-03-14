@@ -7,6 +7,7 @@ import WelcomePage from "./WelcomePage";
 
 const Overview = () => {
   const { isCity, getData } = React.useContext(DataContext);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     getData(getCity());
   }, []);

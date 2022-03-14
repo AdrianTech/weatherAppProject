@@ -22,7 +22,7 @@ const Header = () => {
           submitData();
         }}
       >
-        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder="type your city" />
+        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder="Enter city here..." />
         <button disabled={cityValue.length < 2}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>

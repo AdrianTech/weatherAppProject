@@ -4,6 +4,14 @@
   background-color: $bg-primary;
   @include bdrs;
 }
+.btn-page {
+  margin-top: 15px;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 3px 14px;
+  font-size: 13px;
+}
 @media (min-width: 520px) {
   .grid {
     color: red;
@@ -15,7 +23,7 @@
 @media (min-width: 800px) {
   .grid {
     color: red;
-    margin: 20px auto;
+    margin: 5px auto;
     width: 50%;
     text-align: center;
   }

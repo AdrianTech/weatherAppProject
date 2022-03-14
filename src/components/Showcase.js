@@ -4,7 +4,7 @@ import { DataContext } from "../store/dataContext";
 const Showcase = () => {
   const { city } = React.useContext(DataContext);
   const { name, main, weather, sys } = city;
-  const icon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
   const now = new Date();
   const date = now.toLocaleDateString();
   const time = now.toLocaleTimeString();
