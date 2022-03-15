@@ -1,31 +1,31 @@
 import { DataContext } from "../store/dataContext";
 import React from "react";
+import useTranslations from "../hooks/useTranslations/useTranslations";
 const DetailsPageTwo = () => {
     const { city, setPageHandle } = React.useContext(DataContext);
-    const { wind, visibility, clouds, dt, timezone } = city;
+    const { t, lang } = useTranslations();
+    const { clouds, timezone,  sys  } = city;
     const time = new Date().getTimezoneOffset() * 60 + timezone;
-    const setLocalTime = new Date((dt + time) * 1000).toLocaleTimeString();
+    const dateFormat = lang === 'pl' ? 'eu-PL' : 'en-US';
+    const suriseTime = new Date((sys.sunrise + time) * 1000).toLocaleTimeString(dateFormat);
+    const sunsetTime = new Date((sys.sunset + time) * 1000).toLocaleTimeString(dateFormat);
     return (
-        <>  
+        <>
             <li>
-                <span>Local Time</span>
-                <span>{setLocalTime}</span>
+                <span>{t('Wschód słońca')} </span>
+                <span>{suriseTime}</span>
             </li>
             <li>
-                <span>Wind speed</span>
-                <span>{wind.speed.toFixed(1)} m/s</span>
+                <span>{t('Zachód słońca')} </span>
+                <span>{sunsetTime}</span>
             </li>
             <li>
-                <span>Feels like</span>
+                <span>{t('Temp. odczuwalna')} </span>
                 <span>{city.main.feels_like.toFixed(1)} &#8451;</span>
             </li>
             <li>
-                <span>Cloudiness</span>
+                <span>{t('Zachmurzenie')}</span>
                 <span>{clouds.all} %</span>
-            </li>
-            <li>
-                <span>Visibility</span>
-                <span>{visibility} meters</span>
             </li>
             <button className="btn-page" onClick={() => setPageHandle('back')}>Previous Page</button>
         </>

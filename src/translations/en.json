@@ -1,0 +1,11 @@
+{
+    "Opis pogody": "Weather description",
+    "Ciśnienie": "Air pressure",
+    "Wilgotność": "Humidity",
+    "Wschód słońca": "Sunrise",
+    "Zachód słońca": "Sunset",
+    "Prędkość wiatru": "Wind speed",
+    "Temp. odczuwalna": "Sensed temp.",
+    "Zachmurzenie": "Cloudiness",
+    "Widoczność": "Visibility"
+}

@@ -1,2 +1,4 @@
-export const saveCity = (val) => localStorage.setItem("city", val);
-export const getCity = () => localStorage.getItem("city");
+export const saveItem = (key, val) => localStorage.setItem(key, JSON.stringify(val));
+export const getItem = (key) => {
+    return JSON.parse(localStorage.getItem(key))
+}

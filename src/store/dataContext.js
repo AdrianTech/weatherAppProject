@@ -2,12 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { API } from "../utils/config";
-import { saveCity } from "../utils/helpers";
+import { getItem, saveItem } from "../utils/helpers";
 export const DataContext = React.createContext({});
 
 export const DataContextProvider = (props) => {
   const [city, setCity] = React.useState({});
   const [isCity, setIsCity] = React.useState(false);
+  // const [defaultLang, setLang] = React.useState('pl');
   const [page, setPage] = React.useState(1);
   const [alert, setAlert] = React.useState({ state: false, msg: "" });
 
@@ -23,16 +24,22 @@ export const DataContextProvider = (props) => {
     setPage(page => page + 1);
   }
 
+  const changeLanguage = (lang) => {
+    saveItem('lang', lang);
+    getData(getItem('city'));
+  }
+
   const getData = async (cityVal) => {
     if (!cityVal) return;
+    const lang = getItem('lang');
     try {
-      const res = await axios.get(`${API.link}${cityVal}${API.settings}`, {
+      const res = await axios.get(`${API.link}${cityVal}${API.settings}${lang}`, {
         headers: {
           Domain: "weatheraproject.netlify.app"
         }
       });
       setCity(res.data);
-      saveCity(cityVal);
+      saveItem('city', cityVal);
       setIsCity(true);    
       return true;
     } catch ({response}) {
@@ -46,7 +53,7 @@ export const DataContextProvider = (props) => {
       return false;
     }
   };
-  return <DataContext.Provider value={{ isCity, getData, setPageHandle, page, city, alert }}>{props.children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ isCity, changeLanguage, getData, setPageHandle, page, city, alert }}>{props.children}</DataContext.Provider>;
 };
 DataContext.propTypes = {
   children: PropTypes.node.isRequired,

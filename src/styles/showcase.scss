@@ -26,7 +26,7 @@ li {
     justify-content: space-around;
     width: 90%;
     font-size: 17px;
-    padding: 10px 0;
+    padding: 20px 0;
     border-bottom: 1px solid #7e7e7e;
     margin: 0 auto;
     span {
@@ -46,11 +46,12 @@ li {
 @media (min-width: 480px) {
   .details li {
     width: 70%;
+    padding: 10px 0;
   }
 }
 @media (min-width: 768px) {
   .details li {
-    font-size: 19px;
+    font-size: 20px;
   }
   .showcase h3 {
     font-size: 22px;
