@@ -4,17 +4,18 @@ import { ActionsContext } from "../store/actionsContext";
 import { DataContext } from "../store/dataContext";
 
 const DetailsPageOne = () => {
-    const { city } = React.useContext(DataContext);
+    const { city, currentLanguage: lang } = React.useContext(DataContext);
     const { setPageHandle } = React.useContext(ActionsContext);
     const { t } = useTranslations();
     const { weather, wind } = city;
     const { pressure, humidity } = city.main;
+    const buttonLanguage = lang === 'pl' ? 'Pokaż więcej' : "Show more" ;
     const capitalizeFirstLetter = weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1).toLowerCase();
     return (
         <>
             <li>
-                <span>{t('Opis pogody')}</span>
-                <span style={{ fontSize: capitalizeFirstLetter.length > 15 ? 15 : 19 }}>{capitalizeFirstLetter}</span>
+                <span>{t('Opis')}</span>
+                <span style={{ fontSize: capitalizeFirstLetter.length > 15 ? 16 : 19 }}>{capitalizeFirstLetter}</span>
             </li>
             <li>
                 <span>{t('Ciśnienie')}</span>
@@ -28,7 +29,7 @@ const DetailsPageOne = () => {
                 <span>{t('Wilgotność')} </span>
                 <span>{humidity} %</span>
             </li>
-            <button className="btn-page" onClick={() => setPageHandle('next')}>Show more</button>
+            <button className="btn-page" onClick={() => setPageHandle('next')}>{buttonLanguage}</button>
         </>
     )
 }

@@ -5,6 +5,7 @@ import { ActionsContext } from "../store/actionsContext";
 const DetailsPageTwo = () => {
     const { city, currentLanguage: lang } = React.useContext(DataContext);
     const { setPageHandle } = React.useContext(ActionsContext);
+    const buttonLanguage = lang === 'pl' ? 'Pokaż mniej' : "Show less" ;
     const { t } = useTranslations();
     const { clouds, timezone,  sys  } = city;
     const time = new Date().getTimezoneOffset() * 60 + timezone;
@@ -29,7 +30,7 @@ const DetailsPageTwo = () => {
                 <span>{t('Zachmurzenie')}</span>
                 <span>{clouds.all} %</span>
             </li>
-            <button className="btn-page" onClick={() => setPageHandle('back')}>Previous Page</button>
+            <button className="btn-page" onClick={() => setPageHandle('back')}>{buttonLanguage}</button>
         </>
     )
 }
