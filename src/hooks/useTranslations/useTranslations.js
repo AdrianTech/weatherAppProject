@@ -1,11 +1,11 @@
+import { useContext } from "react";
+import { DataContext } from "../../store/dataContext";
 import * as translations from "../../translations";
-import { getItem } from "../../utils/helpers";
 
 export default function useTranslations() {
-    const getLanguage = getItem('lang');
-    const translate = (key) => translations[getLanguage][key];
+    const { currentLanguage } = useContext(DataContext);
+    const translate = (key) => translations[currentLanguage][key];
     return {
-        lang: getLanguage,
         t: translate,
     }
 }

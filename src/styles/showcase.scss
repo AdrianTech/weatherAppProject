@@ -12,7 +12,7 @@ li {
 }
 .showcase {
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  padding: 15px 0;
+  padding: 30px 0;
   h3 {
     font-size: 19px;
   }
@@ -26,7 +26,7 @@ li {
     justify-content: space-around;
     width: 90%;
     font-size: 17px;
-    padding: 20px 0;
+    padding: 25px 0;
     border-bottom: 1px solid #7e7e7e;
     margin: 0 auto;
     span {
@@ -53,7 +53,10 @@ li {
   .details li {
     font-size: 20px;
   }
-  .showcase h3 {
+  .showcase {
+    padding: 15px;
+  h3 {
     font-size: 22px;
   }
+}
 }

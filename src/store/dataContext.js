@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { API } from "../utils/config";
@@ -8,8 +8,7 @@ export const DataContext = React.createContext({});
 export const DataContextProvider = (props) => {
   const [city, setCity] = React.useState({});
   const [isCity, setIsCity] = React.useState(false);
-  // const [defaultLang, setLang] = React.useState('pl');
-  const [page, setPage] = React.useState(1);
+  const [currentLanguage, setCurrentLanguage] = React.useState(getItem('lang') || 'pl')
   const [alert, setAlert] = React.useState({ state: false, msg: "" });
 
   const alertHandler = (msg) => {
@@ -18,42 +17,37 @@ export const DataContextProvider = (props) => {
       setAlert({ state: false, msg: "" });
     }, 2500);
   };
-  
-  const setPageHandle = (step) => {
-    if(step === 'back') return setPage(page => page - 1);
-    setPage(page => page + 1);
-  }
 
   const changeLanguage = (lang) => {
     saveItem('lang', lang);
+    setCurrentLanguage(lang);
     getData(getItem('city'));
   }
 
-  const getData = async (cityVal) => {
-    if (!cityVal) return;
+  const getData = useCallback( async (cityName) => {
+    if (!cityName) return;
     const lang = getItem('lang');
     try {
-      const res = await axios.get(`${API.link}${cityVal}${API.settings}${lang}`, {
+      const { data } = await axios.get(`${API.link}${cityName}${API.settings}${lang}`, {
         headers: {
           Domain: "weatheraproject.netlify.app"
         }
       });
-      setCity(res.data);
-      saveItem('city', cityVal);
-      setIsCity(true);    
+      setCity(data);
+      saveItem('city', cityName);
+      setIsCity(true);
       return true;
-    } catch ({response}) {
-      if(response.status === 404) {
+    } catch ({ response: { status } }) {
+      if (status === 404) {
         return alertHandler("City not found");
-      } else if(response.status === 400) {
+      } else if (status === 400) {
         return alertHandler("Bad request");
       }
       alertHandler("Ups! Something went wrong");
-      setIsCity(false)
       return false;
     }
-  };
-  return <DataContext.Provider value={{ isCity, changeLanguage, getData, setPageHandle, page, city, alert }}>{props.children}</DataContext.Provider>;
+  },[]);
+  return <DataContext.Provider value={{ isCity, currentLanguage, changeLanguage, getData, city, alert }}>{props.children}</DataContext.Provider>;
 };
 DataContext.propTypes = {
   children: PropTypes.node.isRequired,

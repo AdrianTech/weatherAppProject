@@ -1,9 +1,11 @@
 import { DataContext } from "../store/dataContext";
 import React from "react";
 import useTranslations from "../hooks/useTranslations/useTranslations";
+import { ActionsContext } from "../store/actionsContext";
 const DetailsPageTwo = () => {
-    const { city, setPageHandle } = React.useContext(DataContext);
-    const { t, lang } = useTranslations();
+    const { city, currentLanguage: lang } = React.useContext(DataContext);
+    const { setPageHandle } = React.useContext(ActionsContext);
+    const { t } = useTranslations();
     const { clouds, timezone,  sys  } = city;
     const time = new Date().getTimezoneOffset() * 60 + timezone;
     const dateFormat = lang === 'pl' ? 'eu-PL' : 'en-US';
