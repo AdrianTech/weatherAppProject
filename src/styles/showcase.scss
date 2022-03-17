@@ -26,7 +26,6 @@ li {
     justify-content: space-around;
     width: 90%;
     font-size: 18px;
-    height: 75px;
     padding: 25px 0;
     border-bottom: 1px solid #7e7e7e;
     margin: 0 auto;
@@ -53,13 +52,12 @@ li {
 @media (min-width: 480px) {
   .details li {
     width: 70%;
-    height: auto;
     padding: 10px 0;
     .mobile-smaller {
       font-size: 18px;
     }
     .smaller-data {
-      font-size: 18px;
+      font-size: 17px;
     }
   }
 }
@@ -67,7 +65,7 @@ li {
   .details li {
     font-size: 20px;
     .smaller-data {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
   .showcase {
