@@ -1,10 +1,12 @@
 import React from "react";
 import { DataContext } from "../store/dataContext";
 import logo from "../assets/weather.png";
+import { ternaryFunction } from "../utils/helpers";
 
 const Header = () => {
-  const { getData } = React.useContext(DataContext);
+  const { getData, currentLanguage: lang } = React.useContext(DataContext);
   const [cityValue, setCityValue] = React.useState("");
+  const setPlaceholder = ternaryFunction({defaultValue: 'pl', passValue: lang, firstValue: 'Wpisz miasto...', secondValue: 'Enter city...'})
 
   const submitData = async () => {
     const result = await getData(cityValue);
@@ -22,7 +24,7 @@ const Header = () => {
           submitData();
         }}
       >
-        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder="Enter city here..." />
+        <input type="text" onChange={(e) => setCityValue(e.target.value)} value={cityValue} placeholder={setPlaceholder} />
         <button disabled={cityValue.length < 2}>
           <i className="fa fa-search" aria-hidden="true"></i>
         </button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { DataContext } from "../store/dataContext";
+import { ternaryFunction } from "../utils/helpers";
 
 const Showcase = () => {
   const { city, currentLanguage: lang } = React.useContext(DataContext);
@@ -7,7 +8,8 @@ const Showcase = () => {
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
   const now = new Date();
   const date = now.toLocaleDateString();
-  const time = now.toLocaleTimeString(lang === 'pl' ? 'eu-PL' : 'en-US', {timeStyle: 'short'});
+  const dateFormat = ternaryFunction({defaultValue: 'pl', passValue: lang, firstValue: 'eu-PL', secondValue: 'en-US'})
+  const time = now.toLocaleTimeString(dateFormat, {timeStyle: 'short'});
   return (
     <div className="showcase">
       <div className="topInfo">
