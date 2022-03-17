@@ -12,7 +12,7 @@ const DetailsPageOne = () => {
         <>
             <li>
                 <span>{t('Opis')}</span>
-                <span style={{ fontSize: capitalizeFirstLetter.length > 15 ? 16 : 19 }}>{capitalizeFirstLetter}</span>
+                <span className={capitalizeFirstLetter.length > 15 ? 'smaller-data' : '' }>{capitalizeFirstLetter}</span>
             </li>
             <li>
                 <span>{t('Ciśnienie')}</span>

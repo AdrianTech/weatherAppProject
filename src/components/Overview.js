@@ -8,10 +8,10 @@ import { assets } from "../utils/config";
 import { ActionsContextProvider } from "../store/actionsContext";
 
 const Overview = () => {
-  const { isCity, getData, changeLanguage, currentLanguage } = React.useContext(DataContext);
+  const { isCity, getData, changeLanguage, currentLanguage: lang } = React.useContext(DataContext);
   React.useEffect(() => {
     getData(getItem('city'));
-    if (getItem('lang') == null) {
+    if (!getItem('lang')) {
       saveItem('lang', 'pl');
     }
   }, [getData]);
@@ -20,8 +20,8 @@ const Overview = () => {
       {isCity ? (
         <div className="grid">
           <div className="btn-select">
-            <button disabled={currentLanguage === "pl"} onClick={() => changeLanguage("pl")} ><img src={assets.plFlag} alt="Polish language" /></button>
-            <button disabled={currentLanguage === "en"} onClick={() => changeLanguage("en")}><img src={assets.ukFlag} alt="English language" /></button>
+            <button disabled={lang === "pl"} onClick={() => changeLanguage("pl")} ><img src={assets.plFlag} alt="Polish language" /></button>
+            <button disabled={lang === "en"} onClick={() => changeLanguage("en")}><img src={assets.ukFlag} alt="English language" /></button>
           </div>
           <Showcase />
           <ActionsContextProvider>
