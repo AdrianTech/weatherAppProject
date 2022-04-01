@@ -1,6 +1,6 @@
 {
   "short_name": "Cloud App",
-  "name": "Weather Application",
+  "name": "Weather Cloud App",
   "icons": [
     {
       "src": "cloud.png",

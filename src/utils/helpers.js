@@ -4,7 +4,9 @@ export const getItem = (key) => {
 }
 
 export const ternaryFunction = (...items) => {
-    return items.map(({defaultValue, passValue, firstValue, secondValue}) => {
-       return defaultValue === passValue ? firstValue : secondValue
+    return items.map(({ defaultValue, passValue, firstValue, secondValue }) => {
+        return defaultValue === passValue ? firstValue : secondValue
     });
 }
+
+export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

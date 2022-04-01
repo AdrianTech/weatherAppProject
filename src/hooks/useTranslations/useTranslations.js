@@ -4,7 +4,9 @@ import * as translations from "../../translations";
 
 export default function useTranslations() {
     const { currentLanguage } = useContext(DataContext);
-    const translate = (key) => translations[currentLanguage][key];
+    const translate = (key) => {
+        return translations[currentLanguage][key]
+    };
     return {
         t: translate,
     }

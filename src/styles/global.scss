@@ -15,7 +15,7 @@ body {
   background: url("../assets//winter.jpg") no-repeat center/cover;
 }
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
   padding-bottom: 30px;
 }
 button {
@@ -23,6 +23,9 @@ button {
 }
 ul {
   list-style: none;
+}
+h3, h4 {
+  font-weight: 700;
 }
 .alert {
   display: flex;
@@ -40,6 +43,9 @@ ul {
     color: #d60404;
     border: 2px solid #d60404;
   }
+}
+.react-loading-skeleton {
+  --base-color: #d9d9dc !important;
 }
 @media (min-width: 768px) {
   .alert p {

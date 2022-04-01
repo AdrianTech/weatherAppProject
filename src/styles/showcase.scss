@@ -34,6 +34,7 @@ li {
     }
     .smaller-data {
       font-size: 16px;
+      line-height: 1.2;
     }
     span {
       &:first-child {
@@ -64,9 +65,9 @@ li {
 @media (min-width: 768px) {
   .details li {
     font-size: 20px;
-    .smaller-data {
-      font-size: 18px;
-    }
+    // .smaller-data {
+    //   font-size: 18px;
+    // }
   }
   .showcase {
     padding: 15px;

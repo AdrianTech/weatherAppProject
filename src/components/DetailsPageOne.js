@@ -1,18 +1,17 @@
 import React from "react";
 import useTranslations from "../hooks/useTranslations/useTranslations";
 import { DataContext } from "../store/dataContext";
+import { capitalizeFirstLetter } from "../utils/helpers";
 
 const DetailsPageOne = () => {
-    const { city } = React.useContext(DataContext);
+    const { city: { main: { pressure, humidity }, weather, wind: { speed } } } = React.useContext(DataContext);
     const { t } = useTranslations();
-    const { weather, wind } = city;
-    const { pressure, humidity } = city.main;
-    const capitalizeFirstLetter = weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1).toLowerCase();
+    const desc = capitalizeFirstLetter(weather[0].description);
     return (
         <>
             <li>
                 <span>{t('Opis')}</span>
-                <span className={capitalizeFirstLetter.length > 15 ? 'smaller-data' : '' }>{capitalizeFirstLetter}</span>
+                <span className={desc.length > 15 ? 'smaller-data' : ''}>{desc}</span>
             </li>
             <li>
                 <span>{t('Ciśnienie')}</span>
@@ -20,7 +19,7 @@ const DetailsPageOne = () => {
             </li>
             <li>
                 <span>{t('Prędkość wiatru')}</span>
-                <span>{wind.speed.toFixed(1)} m/s</span>
+                <span>{speed.toFixed(1)} m/s</span>
             </li>
             <li>
                 <span>{t('Wilgotność')} </span>

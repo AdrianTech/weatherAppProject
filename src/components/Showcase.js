@@ -3,8 +3,7 @@ import { DataContext } from "../store/dataContext";
 import { ternaryFunction } from "../utils/helpers";
 
 const Showcase = () => {
-  const { city, currentLanguage: lang } = React.useContext(DataContext);
-  const { name, main, weather, sys } = city;
+  const { city : { name, main, weather, sys }, currentLanguage: lang } = React.useContext(DataContext);
   const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
   const now = new Date();
   const date = now.toLocaleDateString();
