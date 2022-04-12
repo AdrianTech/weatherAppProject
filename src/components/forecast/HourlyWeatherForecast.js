@@ -12,9 +12,9 @@ export default function HourlyWeatherForecast({ list: { main: { temp }, wind: { 
     return (
         <Items>
             <strong><span>{t(days[new Date(dt_txt).getDay()])}</span></strong>
+            <img src={icon} alt="weather icon" />
             <div className="item"><span>Temp: {temp.toFixed(1)} &#8451; | {t('Wiatr')}: {speed.toFixed(1)} m/s</span></div>
             <span>{desc}</span>
-            <img src={icon} alt="weather icon" />
         </Items>
     )
 }

@@ -21,7 +21,7 @@ export default function Forecast() {
     const { t } = useTranslations();
     const forecastCity = ternaryFunction({defaultValue: weather_city.name, passValue: weather_city.name, firstValue: weather_city.name, secondValue: getItem('city')});
     config.url = `${API.linkForecast}${forecastCity}${API.settings}${getItem('lang')}`;
-    const { data, loading } = useFetch(config, [weather_city.name]);
+    const { data, loading } = useFetch(config);
     const { list, city } = data;
     let [hours, select] = [];
 
