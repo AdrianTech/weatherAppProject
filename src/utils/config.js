@@ -6,8 +6,8 @@ export const API = {
 
 
 export const assets = {
-  plFlag: "http://purecatamphetamine.github.io/country-flag-icons/3x2/PL.svg",
-  ukFlag: "http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
+  plFlag: "https://purecatamphetamine.github.io/country-flag-icons/3x2/PL.svg",
+  ukFlag: "https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
 }
 
 export const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
