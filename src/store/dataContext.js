@@ -9,7 +9,7 @@ const userLang = () => window.navigator.language.substring(0, 2) ?? "pl";
 export const DataContextProvider = (props) => {
   const [city, setCity] = React.useState({});
   const [isCity, setIsCity] = React.useState(false);
-  const [currentLanguage, setCurrentLanguage] = React.useState(getItem('lang') || userLang())
+  const [currentLanguage, setCurrentLanguage] = React.useState(getItem('lang') ?? userLang())
   const [alert, setAlert] = React.useState({ state: false, msg: "" });
 
   const alertHandler = (msg) => {
@@ -52,7 +52,7 @@ export const DataContextProvider = (props) => {
   React.useEffect(() => {
     getData(getItem('city'));
     if (!getItem('lang')) {
-      saveItem('lang', 'pl');
+      saveItem('lang', userLang());
     }
   }, [getData]);
   return <DataContext.Provider value={{ isCity, currentLanguage, changeLanguage, getData, city, alert, alertHandler }}>{props.children}</DataContext.Provider>;

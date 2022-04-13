@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 $bg-primary: rgba(5, 199, 233, 0.9);
+
 @mixin bdrs {
   border-radius: 8px;
 }
+
 *,
 ::before,
 ::after {
@@ -10,23 +12,30 @@ $bg-primary: rgba(5, 199, 233, 0.9);
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Poppins", sans-serif;
   background: url("../assets//winter.jpg") no-repeat center/cover;
 }
+
 .wrapper {
   min-height: 100vh;
   padding-bottom: 30px;
 }
+
 button {
   cursor: pointer;
 }
+
 ul {
   list-style: none;
 }
-h3, h4 {
+
+h3,
+h4 {
   font-weight: 700;
 }
+
 .alert {
   display: flex;
   top: 60px;
@@ -34,6 +43,7 @@ h3, h4 {
   width: 100%;
   justify-content: center;
   z-index: 3;
+
   p {
     padding: 5px 30px;
     @include bdrs;
@@ -44,9 +54,11 @@ h3, h4 {
     border: 2px solid #d60404;
   }
 }
+
 .react-loading-skeleton {
   --base-color: #d9d9dc !important;
 }
+
 @media (min-width: 768px) {
   .alert p {
     transform: scale(1.4);

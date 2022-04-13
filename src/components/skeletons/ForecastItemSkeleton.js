@@ -9,16 +9,16 @@ export default function ForecastItemSkeleton() {
         <>
             {Array(5).fill().map((item, index) => (
                 <Items key={index}>
-                    <SkeletonLoading duration={2} height={`20px`} width={100} />
+                    <SkeletonLoading duration={2} height={`25px`} width="100%" />
                     <SkeletonLoading circle
-                        height="40px"
-                        width="40px"
+                        height="45px"
+                        width="45px"
                         containerClassName="avatar-skeleton" />
-                    <SkeletonLoading duration={2} height={`20px`} width="75%" />
-                    <SkeletonLoading duration={2} height={`20px`} width={100} />
+                    <SkeletonLoading duration={2} height="23px" width="230px" />
+                    <SkeletonLoading duration={2} height={`23px`} width="160px" />
                 </Items>
             ))
             }
-            </>
+        </>
     )
 }

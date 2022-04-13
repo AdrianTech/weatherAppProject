@@ -19,7 +19,7 @@ export default function Forecast() {
     const { city: weather_city } = React.useContext(DataContext);
     const [defaultHours, setDefaultHours] = React.useState('12');
     const { t } = useTranslations();
-    const forecastCity = ternaryFunction({defaultValue: weather_city.name, passValue: weather_city.name, firstValue: weather_city.name, secondValue: getItem('city')});
+    const forecastCity = ternaryFunction({ defaultValue: weather_city.name, passValue: weather_city.name, firstValue: weather_city.name, secondValue: getItem('city') });
     config.url = `${API.linkForecast}${forecastCity}${API.settings}${getItem('lang')}`;
     const { data, loading } = useFetch(config);
     const { list, city } = data;
@@ -40,7 +40,7 @@ export default function Forecast() {
             <form className='form-forecast'>
                 {!loading ? <div className="select"><select onChange={(e) => onChangeSelect(e)}>
                     {select}
-                </select></div>: <ForecastItemSelect/>
+                </select></div> : <ForecastItemSelect />
                 }
             </form>
             <ul>
