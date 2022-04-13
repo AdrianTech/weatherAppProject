@@ -2,13 +2,13 @@ import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { API } from "../utils/config";
-import { getItem, saveItem } from "../utils/helpers";
+import { getItem, saveItem, userLang } from "../utils/helpers";
 export const DataContext = React.createContext({});
-const userLang = () => window.navigator.language.substring(0, 2) ?? "pl";
 
 export const DataContextProvider = (props) => {
   const [city, setCity] = React.useState({});
   const [isCity, setIsCity] = React.useState(false);
+  const [forecastData, setForecastData] = React.useState([]);
   const [currentLanguage, setCurrentLanguage] = React.useState(getItem('lang') ?? userLang())
   const [alert, setAlert] = React.useState({ state: false, msg: "" });
 
@@ -55,7 +55,7 @@ export const DataContextProvider = (props) => {
       saveItem('lang', userLang());
     }
   }, [getData]);
-  return <DataContext.Provider value={{ isCity, currentLanguage, changeLanguage, getData, city, alert, alertHandler }}>{props.children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ isCity, currentLanguage, changeLanguage, getData, city, alert, alertHandler, forecastData, setForecastData }}>{props.children}</DataContext.Provider>;
 };
 DataContext.propTypes = {
   children: PropTypes.node.isRequired,

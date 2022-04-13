@@ -1,21 +1,23 @@
+import React from "react";
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
+import { DataContext } from "../store/dataContext";
 
 export default function useFetch(config) {
-    const [data, setData] = useState([]);
+    const { forecastData, setForecastData } = React.useContext(DataContext);
     const [loading, setLoading] = useState(true);
     const fetchData = useCallback(async () => {
         try {
             const { data } = await axios(config);
-            setData(data)
+            setForecastData(data)
             setLoading(false)
         } catch (e) {
         }
-    }, [config])
+    }, [setForecastData, config])
     useEffect(() => {
         fetchData();
-    }, [fetchData, config.url])
+    }, [fetchData, config.url, setForecastData])
     return {
-        data, loading
+        forecastData, loading
     }
 }

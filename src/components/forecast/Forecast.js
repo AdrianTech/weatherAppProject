@@ -6,7 +6,6 @@ import { getItem, ternaryFunction } from '../../utils/helpers';
 import HourlyWeatherForecast from './HourlyWeatherForecast';
 import useTranslations from '../../hooks/useTranslations/useTranslations';
 import ForecastItemSkeleton from '../skeletons/ForecastItemSkeleton';
-import ForecastItemSelect from '../skeletons/ForecastSelectSkeleton'
 const config = {
     method: 'get',
     url: "",
@@ -21,14 +20,14 @@ export default function Forecast() {
     const { t } = useTranslations();
     const forecastCity = ternaryFunction({ defaultValue: weather_city.name, passValue: weather_city.name, firstValue: weather_city.name, secondValue: getItem('city') });
     config.url = `${API.linkForecast}${forecastCity}${API.settings}${getItem('lang')}`;
-    const { data, loading } = useFetch(config);
-    const { list, city } = data;
+    const { forecastData } = useFetch(config);
+    const { list, city } = forecastData;
     let [hours, select] = [];
 
     const onChangeSelect = ({ target: { value } }) => setDefaultHours(value);
 
     if (list) {
-        hours = list.map(city => city.dt_txt.slice(11, 13) === defaultHours && <HourlyWeatherForecast key={city.dt} list={city} city={data.city} />);
+        hours = list.map(city => city.dt_txt.slice(11, 13) === defaultHours && <HourlyWeatherForecast key={city.dt} list={city} city={forecastData.city} />);
         select = forecastOptions.map(({ value, name }) => <option key={value} value={value}>{t(name)}</option>)
     } else {
         hours = <ForecastItemSkeleton />
@@ -38,10 +37,9 @@ export default function Forecast() {
         <section className='details grid forecast'>
             <h2>{city && city.name}</h2>
             <form className='form-forecast'>
-                {!loading ? <div className="select"><select onChange={(e) => onChangeSelect(e)}>
+                <div className="select"><select onChange={(e) => onChangeSelect(e)}>
                     {select}
-                </select></div> : <ForecastItemSelect />
-                }
+                </select></div>
             </form>
             <ul>
                 {hours}
