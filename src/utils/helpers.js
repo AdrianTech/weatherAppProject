@@ -8,13 +8,13 @@ export const ternaryFunction = (...items) => {
 }
 
 /**
- * Capitalize first letter of provided string
+ * Capitalize first letter of the provided string
  * @param {*} str 
  * @returns string
  */
 export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 /**
- * Get language from user
+ * Get language from the user
  * @returns string
  */
-export const userLang = () => window.navigator.language.substring(0, 2) ?? "pl";
+export const userLang = () => window.navigator.language.substring(0, 2) !== "pl" ? "en" : "pl";

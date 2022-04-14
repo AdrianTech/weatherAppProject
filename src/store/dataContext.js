@@ -4,6 +4,7 @@ import axios from "axios";
 import { API } from "../utils/config";
 import { getItem, saveItem, userLang } from "../utils/helpers";
 export const DataContext = React.createContext({});
+console.log(window.navigator.language);
 
 export const DataContextProvider = (props) => {
   const [city, setCity] = React.useState({});
