@@ -10,7 +10,7 @@ const config = {
     method: 'get',
     url: "",
     headers: {
-        domain: getItem('domain')
+        domain: "loc"
     }
 }
 
