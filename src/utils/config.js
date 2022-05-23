@@ -1,6 +1,6 @@
 export const API = {
-  link: "https://atech.katowice.pl/api/data/2.5/weather?q=",
-  linkForecast: "https://atech.katowice.pl/api/data/2.5/forecast?q=",
+  link: "http://proxy.atech.katowice.pl/data/2.5/weather?q=",
+  linkForecast: "http://proxy.atech.katowice.pl/data/2.5/forecast?q=",
   settings: "&units=metric&lang=",
 };
 

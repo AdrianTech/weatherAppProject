@@ -10,7 +10,7 @@ const config = {
     method: 'get',
     url: "",
     headers: {
-        Domain: "weatheraproject.netlify.app"
+        domain: getItem('domain')
     }
 }
 
