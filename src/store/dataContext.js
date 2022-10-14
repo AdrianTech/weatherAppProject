@@ -29,11 +29,7 @@ export const DataContextProvider = (props) => {
     if (!cityName) return;
     const lang = getItem('lang');
     try {
-      const { data } = await axios.get(`${API.link}${cityName}${API.settings}${lang}`, {
-        headers: {
-          domain: "loc"
-        }
-      });
+      const { data } = await axios.get(`${API.link}${cityName}${API.settings}${lang}`);
       setCity(data);
       saveItem('city', cityName);
       setIsCity(true);

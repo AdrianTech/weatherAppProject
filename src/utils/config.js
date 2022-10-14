@@ -1,7 +1,7 @@
 export const API = {
-  link: "https://proxy.atech.katowice.pl/data/2.5/weather?q=",
-  linkForecast: "https://proxy.atech.katowice.pl/data/2.5/forecast?q=",
-  settings: "&units=metric&lang=",
+  link: "https://api.openweathermap.org/data/2.5/weather?q=",
+  linkForecast: "https://api.openweathermap.org/data/2.5/forecast?q=",
+  settings: "&APPID=65145ede2045440196d67207a0169147&units=metric&lang=",
 };
 
 

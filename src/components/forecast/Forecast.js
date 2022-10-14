@@ -9,9 +9,6 @@ import ForecastItemSkeleton from '../skeletons/ForecastItemSkeleton';
 const config = {
     method: 'get',
     url: "",
-    headers: {
-        domain: "loc"
-    }
 }
 
 export default function Forecast() {
