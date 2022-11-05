@@ -1,4 +1,5 @@
 export const saveItem = (key, val) => localStorage.setItem(key, JSON.stringify(val));
+
 export const getItem = (key) => JSON.parse(localStorage.getItem(key));
 
 export const ternaryFunction = (...items) => {
@@ -26,3 +27,17 @@ export const userLang = () => window.navigator.language.substring(0, 2) !== "pl"
  */
 
 export const getTimezoneOffset = (timezone) => new Date().getTimezoneOffset() * 60 + timezone;
+
+
+/**
+ * Convert temperature to fahrenheit if bool is true or return if false
+ * @param {*} bool 
+ * @param {*} temperature 
+ * @returns 
+ */
+export const convertTemperature = (bool, temperature) => {
+    if (bool) {
+        return (<>{(temperature * 9 / 5 + 32).toFixed(0)} &#8457;</>);
+    }
+    return (<>{temperature.toFixed(1)} &#8451;</>);
+} 

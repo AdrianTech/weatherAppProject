@@ -7,6 +7,7 @@ import Forecast from "./components/forecast/Forecast.js";
 import useTranslations from "./hooks/useTranslations/useTranslations";
 import { ternaryFunction } from "./utils/helpers";
 import LanguageSelection from "./components/LanguageSelection";
+import { ActionsContextProvider } from "./store/actionsContext";
 
 function App() {
   const { alert, isCity, alertHandler } = React.useContext(DataContext);
@@ -14,7 +15,7 @@ function App() {
   const [switchPage, setSwitchPage] = React.useState(false);
 
   const switchPageHandle = () => {
-    if(!isCity) return alertHandler('Nie ustawiono miasta');
+    if (!isCity) return alertHandler('Nie ustawiono miasta');
     setSwitchPage(state => !state)
   }
   const results = ternaryFunction(
@@ -26,7 +27,9 @@ function App() {
       <Header />
       <LanguageSelection setSwitchPage={switchPageHandle} result={results[1]} />
       {alert.state && <Alert msg={alert.msg} />}
-      {results[0]}
+      <ActionsContextProvider>
+        {results[0]}
+      </ActionsContextProvider>
     </div>
   );
 }

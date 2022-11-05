@@ -1,9 +1,11 @@
 import { DataContext } from "../store/dataContext";
 import React from "react";
 import useTranslations from "../hooks/useTranslations/useTranslations";
-import { getTimezoneOffset, ternaryFunction } from "../utils/helpers";
+import { convertTemperature, getTimezoneOffset, ternaryFunction } from "../utils/helpers";
+import { ActionsContext } from "../store/actionsContext";
 const DetailsPageTwo = () => {
     const { city: { clouds, timezone, sys, main: { feels_like } }, currentLanguage: lang } = React.useContext(DataContext);
+    const { tempUnit } = React.useContext(ActionsContext);
     const { t } = useTranslations();
     const dateFormat = ternaryFunction({ defaultValue: 'pl', passValue: lang, firstValue: 'eu-PL', secondValue: 'en-US' })
     const suriseTime = new Date((sys.sunrise + getTimezoneOffset(timezone)) * 1000).toLocaleTimeString(dateFormat);
@@ -20,7 +22,7 @@ const DetailsPageTwo = () => {
             </li>
             <li>
                 <span className="mobile-smaller">{t('Temp. odczuwalna')} </span>
-                <span>{feels_like.toFixed(1)} &#8451;</span>
+                <span>{convertTemperature(tempUnit, feels_like)}</span>
             </li>
             <li>
                 <span>{t('Zachmurzenie')}</span>
